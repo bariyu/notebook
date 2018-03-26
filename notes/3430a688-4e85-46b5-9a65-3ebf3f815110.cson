@@ -1,5 +1,5 @@
 createdAt: "2018-03-26T21:34:36.894Z"
-updatedAt: "2018-03-26T21:36:50.058Z"
+updatedAt: "2018-03-26T22:50:31.612Z"
 type: "MARKDOWN_NOTE"
 folder: "fc410573c89e5aa6eb30"
 title: "Week 1"
@@ -7,7 +7,54 @@ content: '''
   # Week 1
   
   
+  ## Welcome [Video]
+  
+  > AI is the new Electricity.
+  
+  ### Courses in the specilization
+  - Neural Networks and Deep Learning
+  - Improving Deep Neural Networks: Hyperparameter tuning, Regularization and Optimization
+  - Structuring your Machine Learning Project
+  - Convolutional Neural Networks
+  - Natural Language Processing: Building sequence models
+  
+  ## What is a neural network? [Video]
+  
+  * Simplest NN **size(X)->O->price(Y)**, RelU => Recfitied Linear Unit => **max(val, 0)**
+  * Each hidden layer takes all inputs, densely connected
+  * Given enough data eg: x,y. NN will discover function x => y.
+  
+  ## Supervised Learning with Neural Networks [Video]
+  
+  * Given **x** find out **y** e.g.: x: ad, user info y: clicks 0/1 | x: image, y (1, 1000) object tags | x: english y: chinese
+  * real estate: standart NN, image: CNN, sequence data (audio) 1d time series: RNN, language: RNN, autonomus driving: complex, hybrid NN
+  * **structed data**: labeled database, very well defined data eg: age, # bedrooms. **unstructred data**: audio, image, text
+  * thanks to NN computers interprets unstructred data much better recently
+  
+  ## Why is Deep Learning taking off? [Video]
+  
+  * **traditional learning algos**: performance platos after some amount of data, **NN**: better leverage from more data depending on size of NN
+  * notation **(m)** => # of tranining examples
+  * large NN dominates performance when dataset is much bigger
+  * Data, Computation, Algorithms
+  * Algorithmic innovation e.g.: Sigmoud => RelU, gradient descent works much better.
+  * Implementing NN is iterative process **idea => experiment => code** so faster computation allows us to iterate faster
+  
+  ## About this Course [Video]
+  * Five courses stated in Welcome Video, almost 4 weeks each. 10 practice questions at the end.
+  * Outline of the course
+  * Week 1: Introduction
+  * Week 2: Basics of Neural Network Programming
+  * Week 3: One hidden layer Neural Networks
+  * Week 4: Deep Neural Networks
+  
+  ## Course Resources [Video]
+  * Discussion forum
+  * Emails
 '''
-tags: []
+tags: [
+  "machine-learning"
+  "deep-learning"
+]
 isStarred: false
 isTrashed: false
