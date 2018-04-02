@@ -1,5 +1,5 @@
 createdAt: "2018-04-01T16:11:54.099Z"
-updatedAt: "2018-04-01T21:02:46.341Z"
+updatedAt: "2018-04-02T12:31:25.925Z"
 type: "MARKDOWN_NOTE"
 folder: "fc410573c89e5aa6eb30"
 title: "Neural Networks and Deep Learning"
@@ -80,7 +80,7 @@ content: '''
   for i = 1 to m:
     z(i) = w^T * x(i) + b
     a(i) = sigmoid(z(i))
-    Jt = -[ y(i) * loga(i) + (1 - y(i)) * log(1 - a(i)) ]
+    J += -[ y(i) * loga(i) + (1 - y(i)) * log(1 - a(i)) ]
     dz(i) = a(i) - y(i)
     
     # for loop over all parameters of w actually
@@ -96,6 +96,120 @@ content: '''
   b := b - alpha * db
   
   ```
+  
+  ## Vectorization [Video]
+  - z = w^T * x + b where w and x are vectors
+  - ``` z = np.dot(w, x) + b``` python numpy version
+  - vectorization is like 300 times faster than for loop
+  
+  ## More Vectorization Examples [Video]
+  - whenever possible avoid explicit for loops
+  - u = Av
+  - u_i = SUM Aij * vj
+  ```
+  # non-vectorized
+  u = np.zeros(n, 1)
+  for i ...
+    for j ...
+      A[i] += A[i][j] * v[j]
+      
+  # vectorized
+  u = np,dot(A, v)
+  ```
+  
+  ```
+  import numpy as np
+  u = np.exp(v)
+  np.log(v)
+  np.abs(v)
+  np.maximum(v, 0)
+  ```
+  
+  ## Vectorizing Logistic Regression [Video]
+  - **X** (nx, m)
+  - **Z** (1, m) = w^T * X + b
+  - ``` Z = np.dot(w.T, x) + b```
+  - b is a real number, implicitly expanded to a vector by python: **Broadcasting**
+  - **A** = sigmoid(Z)
+  
+  ## Vectorizing Logistic Regression's Gradient Output [Video]
+  - **dz(i) = a(i) - y(i)
+  - **dZ** (1, m)
+  - **A** = [ a(1) .. a(m) ]
+  - **Y** = [ y(1) .. y(m) ]
+  - **dZ** = A - Y
+  ```
+  # single iteration of gradident descent for logistic regression
+  # need for loop over this
+  Z = np.dot(w.T, X) + b
+  A = sigmoid(Z)
+  dZ = A - Y
+  dw = 1/m  * X * dZ^T
+  db = 1/m * np.sum(dZ)
+  w := w - alpha * dw
+  b := b - alpha * db
+  ```
+  
+  ## Broadcasting in Python [Video]
+  ```
+  cal = A.sum(axis=0)
+  percentage(100 * A/cal)
+  ```
+  - **reshape** is O(1)
+  - (m, n) +,-,*,/ (1, n) => (m, n)
+  - (m, n) +,-,*,/ (m, 1) => (m, n)
+  
+  ## A note on python/numpy vectors [Video]
+  - get alone done single line of code
+  - implicit stuff => more prune to bugs e.g: broadcasting
+  - no dimension mismatch erros can be dangerous
+  - do not use rank1 arrays
+  ```
+  # don't use this rank1 array
+  a = np.random.randn(5)
+  # a.shape() => (5, )
+  
+  a = np.random.randn(5, 1)
+  # a.shape() => 5, 1 , col vector
+  
+  a = np.random.randn(1, 5)
+  # a.shape() => 1, 5, row vector
+  
+  # cheap op, easy to eliminate bugs, use freely
+  assert(a.shape == (5, 1))
+  
+  # use freely if you are not sure
+  a = a.reshape((5, 1))
+  ```
+  
+  ## Quick tour of Jupyter/iPython Notebooks [Video]
+  - ipython for assignments
+  - remember to execute import blocks
+  
+  ## Explanation of logistic regression cost function (optional) [Video]
+  - y^ = sigmoid(w^T * x + b) where sigmoid(z) = 1 / (1 + e^-z)
+  - y^ = P(y = 1 | x)
+  - if y = 1: P(y | x) = y ^
+  - if y = 0: P(y | x) = 1 - y^
+  - p(y | x) = y^*^*(y * (1 - y^)*^*(1 - y))
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
   
 '''
 tags: [
