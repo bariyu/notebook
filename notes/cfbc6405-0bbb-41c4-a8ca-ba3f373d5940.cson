@@ -1,5 +1,5 @@
 createdAt: "2018-04-01T16:11:54.099Z"
-updatedAt: "2018-04-02T12:31:25.925Z"
+updatedAt: "2018-04-02T19:30:28.609Z"
 type: "MARKDOWN_NOTE"
 folder: "fc410573c89e5aa6eb30"
 title: "Neural Networks and Deep Learning"
@@ -133,7 +133,7 @@ content: '''
   - **A** = sigmoid(Z)
   
   ## Vectorizing Logistic Regression's Gradient Output [Video]
-  - **dz(i) = a(i) - y(i)
+  - **dz(i)** = a(i) - y(i)
   - **dZ** (1, m)
   - **A** = [ a(1) .. a(m) ]
   - **Y** = [ y(1) .. y(m) ]
