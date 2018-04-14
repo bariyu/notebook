@@ -1,0 +1,81 @@
+createdAt: "2018-04-14T17:55:02.899Z"
+updatedAt: "2018-04-14T20:47:55.621Z"
+type: "MARKDOWN_NOTE"
+folder: "fc410573c89e5aa6eb30"
+title: "Neural Networks and Deep Learning"
+content: '''
+  # Neural Networks and Deep Learning
+  # Week 3 - Shallow Neural Network
+  
+  ## Neural Networks Overview [Video]
+  - Multiple layers in the neural network
+  - superscript on z to indicate layer e.g: **z\\^[1] = W\\^[1] x + b\\^[1]**
+  - **z\\^[1] = W\\^[1] x + b\\^[1]** => **a\\^[1] = sigmoid(z\\^[1])** => **z\\^[2] = W\\^[2] a\\^[1] + b\\^[2]** =>**a\\^[2] = sigmoid(z\\^[2])** => **L(a\\^[2], y)**
+  
+  ## Neural Network Representation [Video]
+  - input layer, hidden layer, output layer
+  - input layer => **a\\^[0] = x** activation
+  - hidden layer => **a\\^[1]**
+  - output layer => **a\\^[2] = y^**
+  - 2 layer NN, input layer is not counted
+  - input layer => layer 0
+  
+  ## Computing a Neural Network's Output [Video]
+  - circle has 2 parts, first compute z then a the sigmoid
+  - superscript => layer, subscript => node in layer
+  - vectorize nodes
+  
+  ## Vectorizing across multiple examples [Video]
+  - vector all training examples in matrix X (nx, m) where m # of training examples and nx # of features
+  - similar for z and a => Z, A
+  - X horizontally training examples, vertically different features
+  - Z, A horizontally => training examples, vertically hidden units
+  
+  ## Explanation for Vectorized Implementation [Video]
+  - for loop of m examples to vectorized version
+  
+  ## Activation functions [Video]
+  - we have used sigmoid so far, maybe others?
+  - another non-linear function g
+  - tanh(z) = e^z - e^-z / e^z + e^-z
+  - shifted version of sigmoid, passiong 0, 0
+  - output layer sigmoid makes sense sometimes for binary classification, hidden layer tanh out performs sigmoid
+  - RelU, Leaky RelU
+  - sigmoid => binary classficiation
+  - tanh => superior to sigmoid
+  - RelU => a = max(0, z)
+  - leaky RelU => max(0,01 * z, z)
+  
+  ## Why do you need non-linear activation functions? [Video]
+  - linear hidden layer useless
+  - composition of linear functions => linear function
+  - if predicting real numbers e.g house prices linear activation function can be used on the output layer
+  
+  ## Derivatives of activation functions [Video]
+  - linear hidden layer useless
+  - for sigmoid **g(z)**, derivative is **g'(z) =  g(z) * (1 - g(z))**
+  - for **g(z) = tanh(z)**, derivative is **g'(z) = 1 - g(z)^2**
+  - for **g(z) = RelU**, derivative is **g'(z) = z < 0 :: 0 | z > 1 :: 1 | z = 0 :: undefined**
+  - for **g(z) = Leaky RelU**, derivative **g'(z) = z < 0 :: 0.01 | z > 0 :: 1 | z = 0 :: undefined**
+  
+  ## Gradient descent for Neural Networks [Video]
+  - Compute prediction
+  - J(W\\^[1], b\\^[1], W\\^[2], b\\^[2])
+  - compute derivatives for all params dW'\\^[1] ... db'\\^[2]
+  - updates params for all W\\^[1] = W\\^[1] - alpha * dW'\\^[1] ...
+  
+  ## Backpropagation intuition (optional) [Video]
+  - 6 derivatives
+  
+  ## Random Initialization [Video]
+  - if we start with 0 hidden units will be same..
+  - initialize weights randomly
+  - W[1] = np.random.randn((2, 2)) * 0.01
+  - 0.01 => closer to middle for activation function so that we can learn faster
+'''
+tags: [
+  "machine-learning"
+  "deep-learning"
+]
+isStarred: false
+isTrashed: false
