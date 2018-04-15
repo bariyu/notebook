@@ -1,0 +1,71 @@
+createdAt: "2018-04-15T18:43:24.617Z"
+updatedAt: "2018-04-15T20:05:39.150Z"
+type: "MARKDOWN_NOTE"
+folder: "fc410573c89e5aa6eb30"
+title: "Neural Networks and Deep Learning"
+content: '''
+  # Neural Networks and Deep Learning
+  # Week 4 - Deep Neural Network
+  
+  ## Deep L-layer neural network [Video]
+  - logistic regression 0 hidden layer, shallow
+  - 2 layer NN, 1 hidden layer, 1 output
+  - indexing input layer is 0, hl 1 ... L - 1, L output layer
+  - **n\\^[l]** = # of units in layer l
+  - **a\\^[l]** activations in layer l
+  - **a\\^[l] = g\\^[l] (z\\^[l])**
+  - **a\\^[l]** weights for **z\\^[l]**
+  
+  ## Forward Propagation in a Deep Network [Video]
+  - **z\\^[1] = w\\^[1] x + b\\^[1]**
+  - **a\\^[1] = g\\^[1] (z\\^[1])**
+  - **z\\^[l] = w\\^[l] a\\^[l - 1]  + b\\^[l]**
+  - **a\\^[l] = g\\^[l] (z\\^[l])**
+  - **X = A\\^[0]**
+  - **Z** columns training examples, stacked horizontally
+  - in forward propagation: for loop for each layer for activations
+  
+  ## Getting your matrix dimensions right [Video]
+  - piece of paper for checking dimensions :)
+  - **w\\^[1] shape : (n\\^[1], n\\^[0])**
+  - **w\\^[l] shape : (n\\^[l], n\\^[l - 1])**
+  - **b\\^[l] shape : (n\\^[l], 1)**
+  - derivatives of w and b has same dim as w and b
+  - **z/a\\^[l] shape : (n\\^[1], 1)**
+  - **Z/A\\^[l] shape : (n\\^[1], m)** m # of training examples
+  - derivaties of Z and A has same dim as Z and A
+  
+  ## Why deep representations? [Video]
+  - early layers detects simple functions edges, later layers eyes and later faces etc..
+  - audio => first layers => low level audio waveform, middle => phonemes, later => words, sentences
+  - similar to how human brain wokrs, good analogy
+  - circuit theory and deep learning => there are functions that you can compute with small L-layer deep neural network that shallower networks require exponentially more hidden units to compute
+  - xor tree => O(logn), 1 hidden layer => O(2^n)
+  - **deep learning**, branding :))
+  
+  ## Building blocks of deep neural networks [Video]
+  - layer l: **w\\^[l], b\\^[l]**
+  - forward input: **a\\^[l - 1]**, output: **a\\^[l]**
+  - cache **z\\^[l]**
+  - backward input: **da\\^[l]** + cache **z\\^[l]** , output **da\\^[l - 1]**, **dw\\^[l]**, **db\\^[l]**
+  - **a\\^[l] = y^**
+  
+  ## Forward and Backward Propagation [Video]
+  - forward layer l, input **a\\^[l - 1]**, output: **a\\^[l]**, cache **z\\^[l]**
+  - backward layer l, input: **da\\^[l]**, output: **da\\^[l - 1]**, **dw\\^[l]**, **db\\^[l]**
+  
+  ## Parameters vs Hyperparameters [Video]
+  - parameters: **W\\^[1]**, **b\\^[1]** ... **W\\^[L]**, **b\\^[L]**
+  - hyperparameters: learning rate alpha, # of iterations, hidden layer L, hidden units **n\\^[1]**, **n\\^[2]** .., choice of activation function
+  - later: momentum, minibatch size, ..
+  - idea, code, experiment
+  
+  ## What does this have to do with the brain? [Video]
+  - neurons as layers
+'''
+tags: [
+  "machine-learning"
+  "deep-learning"
+]
+isStarred: false
+isTrashed: false
