@@ -1,5 +1,5 @@
 createdAt: "2018-04-16T19:55:37.996Z"
-updatedAt: "2018-04-16T22:46:17.187Z"
+updatedAt: "2018-04-16T23:05:46.038Z"
 type: "MARKDOWN_NOTE"
 folder: "fc410573c89e5aa6eb30"
 title: "Improving Deep Neural Networks: Hyperparameter tuning, Regularization and Optimization"
@@ -46,7 +46,7 @@ content: '''
   
   ## Why regularization reduces overfitting? [Video]
   - some hidden units will have very little weights and will not contribute much
-  - if alpha goes up, w goes down (formula in previous video) and z will be small and will be the linear part of tanh function
+  - if lambda goes up, w goes down (formula in previous video) and z will be small and will be the linear part of tanh function
   - L2 reg, andrew's favoruite
   
   ## Dropout Regularization [Video]
