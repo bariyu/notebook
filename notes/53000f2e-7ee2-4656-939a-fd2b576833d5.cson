@@ -1,0 +1,117 @@
+createdAt: "2018-04-16T19:55:37.996Z"
+updatedAt: "2018-04-16T22:46:17.187Z"
+type: "MARKDOWN_NOTE"
+folder: "fc410573c89e5aa6eb30"
+title: "Improving Deep Neural Networks: Hyperparameter tuning, Regularization and Optimization"
+content: '''
+  # Improving Deep Neural Networks: Hyperparameter tuning, Regularization and Optimization
+  
+  # Week 1 - Setting up your Machine Learning Application
+  
+  ## Train / Dev / Test sets [Video]
+  - Applied ML is a highly iterative process
+  - Data divided into 3 => training, hold out cross valid / development, test
+  - % 60 / 20 / 20, 98 / 1 / 1 data portions divided
+  - mismatched train/test distribution is a problem.
+  - dev and test data should come from same distribution
+  - not having a test set, only dev might be ok. Dev set as test set => might overfit
+  
+  ## Bias / Variance [Video]
+  - high bias => underfitting
+  - just right
+  - high variance => overfitting
+  - train set error => %1, dev set error %11 => high variance
+  - train set error => %15, dev set error %16 => high bias
+  - train set error => %15, dev set error %30 => high bias, high variance
+  - train set error => %0.5, dev set error %1 => low bias, low variance
+  - optimal bayes error => %15
+  - training set => gives bias, dev set => gives variance
+  
+  ## Basic Recipe for Machine Learning [Video]
+  - Initial algo and ask high bias (training data performance)? => bigger network (NN arch search) until bias is gone
+  - When bias is low ask high variance(dev data performance)? => more data, regularization (NN arch search)
+  - hopefully low bias & low variance
+  - ```bias variance trade off``` bigger network less bias, more data less variance usually..
+  - training a bigger network always never hurts
+  
+  # Week 1 - Regularizing your neural network
+  
+  ## Regularization [Video]
+  - L2 regularization: **lambda / 2m * ||w||^2** added to cost function to regularize maybe same term for b but usually omited, not much important since most of the params are in **w**, where **||w||^2 = wT.w**
+  - L1 regularization: **lambda / 2m * ||w||^**, w will be sparse mostly 0
+  - **lambda**: regularization parameter, another hyperparameter
+  - Frobenius form: **||.||^2**
+  - L2 reg also called weight decay
+  - **w\\^[l] = w\\^[l] - alpha * (from_back_prop + lambda/m * w\\^[l])**
+  
+  ## Why regularization reduces overfitting? [Video]
+  - some hidden units will have very little weights and will not contribute much
+  - if alpha goes up, w goes down (formula in previous video) and z will be small and will be the linear part of tanh function
+  - L2 reg, andrew's favoruite
+  
+  ## Dropout Regularization [Video]
+  - coin toss 0.5 prob remove some hidden inputs
+  ```
+  # implementing dropout, inverted dropout
+  # keep_prob = 0.8
+  d3 = np.random.rand(a3.shape[0], a3.shape[1]) < keep_prob
+  a3 = np.multipyle(a3, d3) # a3 * d3
+  a3 /= keep_prob
+  ```
+  - no dropout at test time
+  
+  ## Understanding Dropout [Video]
+  - intuation: cant rely on any one feature, so have to spread out weights
+  - since any input can go away during dropout, they wont get very high weight..
+  - different keep_prob on different layers
+  - unless overfitting no need to drop-out
+  - in computer vision less data => almost always overfitting => so they dropout by default
+  
+  ## Other regularization methods [Video]
+  - data augmentation e.g rotate images
+  - early stopping during iterations on learning
+  
+  # Week 1 - Setting up your optimization problem
+  
+  ## Normalizing inputs [Video]
+  - subtract mean until mean is 0 **x = x - muu | muu = 1/m sum(x)**
+  - normalize variance **x/= sigma | sigma = sum(x\\*\\*2)**
+  - use same **muu** and **sigma** for test/training
+  - normalize => cost function will be symmetric
+  
+  ## Vanishing / Exploding gradients [Video]
+  - linear activation so all matrices multiplied, normal linear function **w^\\L** might vanish/explode
+  
+  ## Weight Initialization for Deep Networks [Video]
+  - partial solution is rand init to prevent vanishing/exploding gradients
+  - large n => smaller w[i]
+  - var (w[i]) = 1 / n
+  - different formulas for relu and tanh (xavier initialization)
+  
+  ## Numerical approximation of gradients [Video]
+  - two sides on derivative, much closer
+  - but implementation will be slower since more computation is required
+  
+  ## Gradient checking [Video]
+  - take all params w, b and reshape into theta
+  - take derivatives and reshape into dtheta
+  - J(theta)
+  ```
+  for each i:
+    dtheta_aprox(i) = (J(theta1, theta2, theta3.., thetai + epsilion) - J(theta1, theta2, theta3.., thetai - epsilion)) / 2 epsilion
+  ```
+  - check **dtheta_aprox ~ dtheta**, euclidian distance
+  - verify no bugs in code when the diff is very low
+  
+  ## Gradient Checking Implementation Notes [Video]
+  - no for training only to debug
+  - if grad check fails look at the components to try to identify the bug
+  - Remember regularization
+  - Doesn't work without dropout, implement without dropout then add dropout and hope it's correct
+'''
+tags: [
+  "machine-learning"
+  "deep-learning"
+]
+isStarred: false
+isTrashed: false
