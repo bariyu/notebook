@@ -1,0 +1,86 @@
+createdAt: "2018-04-17T22:02:28.640Z"
+updatedAt: "2018-04-17T22:02:35.679Z"
+type: "MARKDOWN_NOTE"
+folder: "fc410573c89e5aa6eb30"
+title: "Improving Deep Neural Networks: Hyperparameter tuning, Regularization and Optimization"
+content: '''
+  # Improving Deep Neural Networks: Hyperparameter tuning, Regularization and Optimization
+  
+  # Week 2 - Optimization Algorithms
+  
+  ## Mini-batch gradient descent [Video]
+  - vectorization allows us to compute efficiently on m examples
+  - training set splited in to mini batches e.g m = 5m, batch size: 1k each
+  - **X\\^{1}** first mini batch
+  - **Y\\^{1}** first mini batch
+  - **X\\^{1}** shape: (nx, 1000)
+  - **Y\\^{1}** shape: (1, 1000)
+  ```
+  for t 1..5000:
+    forward prop on X^{t}
+    compute J^{t}
+    backprop with J^{t}
+  ```
+  - 1 epoch => single pass through the training set
+  
+  ## Understanding mini-batch gradient descent [Video]
+  - minibatch size picking
+  - minibatch size = m, batch gradient descent
+  - minibatch size = 1, stochasta gradient descent
+  - stochasta gradient descent will be noisy
+  - in practice batch size is in between 1 and m
+  - if small training set => batch gradident descent (< 2k)
+  - typical sizes (64, 128, 256, 512)
+  - make sure minibatch data fits in CPU/GPU memory
+  - minibatch size: another hyper parameter
+  
+  ## Exponentially weighted averages [Video]
+  - **V_t = beta * V_t-1 + (1 - beta) * theta_t**
+  - **V_t** approximately average over 1 / (1 - beta)
+  
+  ## Understanding exponentially weighted averages [Video]
+  - **v_o = 0**
+  - **v_1 = beta * v_o + (1-beta) * theta_1**
+  - one line of code :)
+  
+  ## Bias correction in exponentially weighted averages [Video]
+  - for starting point of data to compute properly without bias
+  
+  ## Gradient descent with momentum [Video]
+  - on iteration compute dw, db on current mini-batch
+  - **v_dw = beta * v_dw + (1-beta) * dw**
+  - **v_db = beta * v_db + (1-beta) * db**
+  - **w = w - alpha * v_dw**
+  - **b = b - alpha * v_db**
+  - beta => friction, v => velocity, dw/b => acceleration
+  - most common beta = 0.9
+  - people usually don't bother with bias correction because they are ok with first n(10) having bias
+  - some literature omits 1-beta term, but andrew likes to keep it
+  
+  ## RMSprop [Video]
+  - on iteration on t, compute dW, db on current mini-batch
+  - **s_dw = beta * s_dw + (1 - beta) * dW^2**
+  - **s_db = beta * s_db + (1 - beta) * db^2**
+  - **w = w - alpha * dw / sqrt(s_dw)**
+  - **b = b - alpha * db / sqrt(s_db)**
+  - we can use larger learning rate with RMSprop
+  
+  ## Adam optimization algorithm [Video]
+  - momentum + RMSprop
+  
+  ## Learning rate decay [Video]
+  - slowly reduce learning rate over time
+  - as learning approaches convergance smaller steps makes sense
+  - **alpha = 1 / (1 + decay_rate * epoch_num)**
+  - **alpha = 0.95^epoch_num * alpha_0**
+  - **alpha = k / sqrt(epoch_num) * alpha_0**
+  - also discrete decay
+  
+  ## The problem of local optima [Video]
+  - plateus can slow down learning
+  - unlikely to get stuck in local optima
+  
+'''
+tags: []
+isStarred: false
+isTrashed: false
