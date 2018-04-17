@@ -1,5 +1,5 @@
 createdAt: "2018-04-17T22:02:28.640Z"
-updatedAt: "2018-04-17T22:02:35.679Z"
+updatedAt: "2018-04-17T22:03:11.519Z"
 type: "MARKDOWN_NOTE"
 folder: "fc410573c89e5aa6eb30"
 title: "Improving Deep Neural Networks: Hyperparameter tuning, Regularization and Optimization"
@@ -81,6 +81,9 @@ content: '''
   - unlikely to get stuck in local optima
   
 '''
-tags: []
+tags: [
+  "machine-learning"
+  "deep-learning"
+]
 isStarred: false
 isTrashed: false
