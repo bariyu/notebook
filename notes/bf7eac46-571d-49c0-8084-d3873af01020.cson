@@ -1,0 +1,136 @@
+createdAt: "2018-04-18T20:03:39.248Z"
+updatedAt: "2018-04-18T22:43:21.624Z"
+type: "MARKDOWN_NOTE"
+folder: "fc410573c89e5aa6eb30"
+title: "Improving Deep Neural Networks: Hyperparameter tuning, Regularization and Optimization"
+content: '''
+  # Improving Deep Neural Networks: Hyperparameter tuning, Regularization and Optimization
+  
+  # Week 3 - Hyperparameter tuning
+  
+  ## Tuning process [Video]
+  - we have a lot of hyperparameters
+  - try random values don't use a grid
+  - coarse to fine, have a smaller area to search for parameters
+  
+  ## Using an appropriate scale to pick hyperparameters [Video]
+  - alpha between 0.00001 and 1, on log scale search params so more resources to smaller params.
+  ```
+  r = -4 * np.random.rand()
+  alpha = 10^r
+  ```
+  - hyperparameters for exponentially weighting averages
+  ```
+  r [-3, -1]
+  1 - beta = 10^r
+  beta = 1 - 10^r
+  ```
+  - to search beta between 0.9 and 0.999 with correct scale, beta can have huge impact when it's closer to 1
+  
+  ## Hyperparameters tuning in practice: Pandas vs. Caviar [Video]
+  - Intuitions do get stale. Re-evalue occasionaly.
+  - Babysitting one model, if not enough bandwith, computation power (panda a lot of effort on on baby)
+  - Training many models in parallel (caviar, a lot of eggs)
+  
+  # Week 3 - Batch normalization
+  
+  ## Normalizing activations in a network [Video]
+  - normalizing features => speeds up learning
+  - normalizing activations so training other layers is easier
+  - we can normalize any hidden layer to train next layers faster (batch norm), normalize **z\\^[n]**
+  - given some intermadiate values in NN
+  - **muu = 1/m sum(z(i))**
+  - **sigma^2 = 1/m sum(z(i) - muu)^2**
+  - **z(i)_norm = (z(i) - muu) / sqrt(sigma^2 + epslion)**
+  - **~Z(i)= gamma * z(i)_norm + beta** where gamma and beta is learnable parameters of the model
+  - **~Z(i)** instead of **z(i)**
+  
+  ## Fitting Batch Norm into a neural network [Video]
+  - **Z => ~Z** before activation, new params beta and gamma
+  - can use mini batches as well
+  - when batch norm zeroes out mean, b params becomes obselete (0)
+  - **beta\\^[l] | gamma\\^[l]**, shape: **(n\\^[l], 1)**
+  - use batch norm on forward prop and update beta/gamma on backward prop
+  - works with momentum, RMSprop, Adam as well
+  
+  ## Why does Batch Norm work? [Video]
+  - weights on later layers more robust to change since we normalize earlier layers
+  - covariate shift
+  - each layer can learn more independently
+  - each mini-batch scaled by mean/variance computed on that mini-batch, z's are slightly noisy, has a regularization effect
+  - a way to normalize not to regularize (un intended side effect)
+  
+  ## Batch Norm at test time [Video]
+  - **muu, sigma**: estimate using exponentially weighted averages across mini-batches
+  - compute **z(i)_norm** with those estimantions
+  
+  # Week 3 - Multi-class classification
+  
+  ## Softmax Regression [Video]
+  - recognizin multiple classes
+  - C = # of classes (0...C-1)
+  - last layer C units each outpus probablity of belonging to a class (softmax layer)
+  - softmax activation function:
+  ```
+  t = e^(z^[i])
+  a^[l] = e^(z^[i]) / sum_1__c(t_i)
+  a^[l] = ti / sum_1__c(t_i)
+  ```
+  
+  ## Training a softmax classifier [Video]
+  - softmax generalizes logistic regression to **C** classes
+  - **C = 2** => logistic regression
+  - **L(y^, y) = - sum_1__c| y_j * logy\\^_j |**
+  - loss small <=> y^ bigger
+  - **J(w\\^[1], b\\^[1]) = 1/m sum_1__m| L(y^(i), y(i)) |**
+  - **Y**, shape: (C, m)
+  - back prop: **dz\\^[L] = y^ -y**
+  
+  # Week 3 - Multi-class classification
+  
+  ## Deep learning frameworks [Video]
+  - know basics, but use frameworks for real deal
+  - ease of programming
+  - running speed
+  - truly open (open source with good govarnance)
+  
+  ## TensorFlow [Video]
+  ```
+  import numpy as np
+  import tensorflow as tf
+  
+  coefficients = np.array([[1.], [-10.], [25.]])
+  
+  w = tf.Variable(0, dtype=float32)
+  x = tf.placeholder(tf.float32, [3, 1])
+  #cost = tf.add(w**2, tf.multiply(-10., w), 25)
+  #cost = w**2 - 10*2 + 25
+  cost = x[0][0]*w**2 + x[1][0]*w + x[2][0]
+  train = tf.train.GradientDescentOptimizer(0.01).minimize(cost)
+  
+  init = tf.global_variables_initalizer()
+  session = tf.Session()
+  session.run(init)
+  
+  print(session.run(w))
+  
+  session.run(train, feed_dict={x: coefficients})
+  print(session.run(w))
+  
+  for i in range(1000):
+    session.run(train, feed_dict={x: coefficients})
+  print(session.run(w))
+  ```
+  ```
+  # idiomatic way
+  with tf.Session() as session:
+    session.run(init)
+    print(session.run(w))
+  ```
+'''
+tags: [
+  "machine-learning"
+  "deep-learning"
+]
+isStarred: false
+isTrashed: false
