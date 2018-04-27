@@ -1,0 +1,83 @@
+createdAt: "2018-04-27T20:12:16.522Z"
+updatedAt: "2018-04-27T22:27:04.538Z"
+type: "MARKDOWN_NOTE"
+folder: "fc410573c89e5aa6eb30"
+title: "Structuring Machine Learning Projects"
+content: '''
+  # Structuring Machine Learning Projects
+  
+  # Week 1 - Introduction to ML Strategy
+  
+  ## Why ML Strategy [Video]
+  - You have %90 accuracy and want to improve.
+  - You have lots of options to improve it so we need strategy and be smart.
+  
+  ## Orthogonalization [Video]
+  - 1 knob for 1 feature you want to control, dont mix them. It makes them a lot harder.
+  - Fit training => dev => test set well on cost function => performs good in real world.
+  
+  # Week 1 - Setting up your goal
+  
+  ## Single number evaluation metric [Video]
+  - Single metric tells you, works or not.
+  - Precision: percentage of true positives (percentange of recognized cats are actually cats.)
+  - Recall: percentage of actual cats correctly recognized.
+  - Often trade-off between precision and recall.
+  - A new metric combines precision and recall: **F1 score** avg of P and R. (harmonic mean) **2 / (1 / P + 1 / R)**
+  - dev set + single number evaluation metric. Speeds up iterations.
+  
+  ## Satisficing and Optimizing metric [Video]
+  - cost = accuracy - 0.5 * runningTime
+  - **Accuracy** => optimizing metric
+  - **Running Time** => satisficing metric
+  - trigger words: hey siri, hey google
+  - maximize accuracy such that false positive <= 1 every 24 hours
+  
+  ## Train/dev/test distributions [Video]
+  - Dev/Test should come from same distribution.
+  - Choose a dev/test set to reflect data you expect to get in the future and consider important to do well on.
+  
+  ## Size of the dev and test sets [Video]
+  - old way 70 - 30 [train - test]. 60 - 20 - 20 [train - dev - test]
+  - If you have a lot of data you can do 98 - 1 - 1
+  - Set your test big enough to give high confidence in overall performance of the system.
+  - Maybe you are ok without test set.
+  
+  ## When to change dev/test sets and metrics [Video]
+  - Give more weight to porn images so we make sure they stay out in cost function.
+  - Define a metric to evalute classifiers.
+  - Then worry about how to do well on it.
+  - Doing well on metric + dev/test doesn't mean going to do well in app. If fails to do well change metric or dev/test set.
+  
+  # Week 1 - Comparing to human-level performance
+  
+  ## Why human-level performance? [Video]
+  - Machine learning algos becomes better.
+  - bayes optiomal error/limit. Best possible error
+  - Humans are quite good at tasks. As long as ML is worse: get labeled data from humans, gain insight from manual error analysis. Better analysis of bias/variance.
+  
+  ## Avoidable bias [Video]
+  - If humans to good algo is bad => focus on bias
+  - If humans also not good => focus on variance
+  - 7.5 human, 8.0 algo. 0.5 avoidable bias
+  
+  ## Understanding human-level performance [Video]
+  - what is **human-level** error
+  - bayes error <= avoidable bias => training error <= variance => dev error
+  
+  ## Surpassing human-level performance [Video]
+  - When ML > humans, improving is much harder
+  - e.g: online advertising, product recommendations, logistics, loan approvals
+  - All examples above learning from structured data
+  - Even for speech recog etc recently.
+  
+  ## Improving your model performance [Video]
+  - Avoidable bias: train bigger model, train better/longer optimization algorithms, NN architecture/hyperparameters search
+  - Variance: More data, regularization, NN architecture/hyperparameters search
+'''
+tags: [
+  "machine-learning"
+  "deep-learning"
+]
+isStarred: false
+isTrashed: false
