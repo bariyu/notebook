@@ -1,0 +1,108 @@
+createdAt: "2018-04-29T18:49:19.986Z"
+updatedAt: "2018-04-29T20:31:05.590Z"
+type: "MARKDOWN_NOTE"
+folder: "fc410573c89e5aa6eb30"
+title: "Convolutional Neural Networks"
+content: '''
+  # Convolutional Neural Networks
+  
+  # Week 1 - Convolutional Neural Networks
+  
+  ## Computer Vision [Video]
+  - Image classification
+  - Object detection
+  - Neural Style Transfer (Prisma App)
+  
+  ## Edge Detection Example [Video]
+  - kernel == filter
+  - vertical edge detector, convolution 6 x 6 image * 3 x 3 filter => 4 x 4 output
+  - element wise product and summed later
+  
+  ## More Edge Detection [Video]
+  - vertical, horizontal edge detector
+  - different filters allows us to find vertical-horizontal edges
+  - sobel filter 1 2 1 instead of 1 1 1
+  - scharr filter 3 10 3
+  - learn parameters in the filters for building edge detector.
+  
+  ## Padding [Video]
+  - n x n, f x f => (n - f + 1) x (n - f + 1)
+  - pad the image so output is same size
+  - padding p = 1
+  - valid & same convolutions
+  - valid => no padding, n x n, f x f => (n - f + 1) x (n - f + 1)
+  - same => pad so output size = input size n = n + 2p - f + 1, p = (f - 1) / 2
+  - f is usually almost odd
+  
+  ## Strided Convolutions [Video]
+  - stride # of pixels you jump when doing convolution
+  - floor[ (n + 2p - f) / s + 1 ]
+  - cross convolution some sort of rotated filter
+  
+  ## Convolutions Over Volume [Video]
+  - RGB image convolution, stacked 3 filters
+  - each layer multiplied with corresponding layer and all added together
+  - filter will have same number of channels
+  - vertical edge filter, horizontal edge filter => 2 output volumes
+  - output: (n - f + 1) x (n - f + 1) x nc' where nc' is number of channels we are detecting
+  - nc = depth in literature as well
+  
+  ## One Layer of a Convolutional Network [Video]
+  - add b_i real number to every output channel
+  - z = w * a + b
+  - w filter, a image, b bias
+  - 10 filters 3 x 3, # of params => (3 * 3 * 3 + 1) * 10 = 280
+  - Small parameters even big images
+  - layer l:
+    - **f\\^[l] = filter size**
+    - **p\\^[l] = padding**
+    - **s\\^[l] = stride**
+    - **n_c\\^[l] = number of filters**
+    - **each filter: f\\^[l] x f\\^[l] x nc\\^[l-1]**
+    - **activations: a\\^[l] = nh\\^[l]** x **nw\\^[l]** x **nc\\^[l]**
+    - **weights: f\\^[l] x f\\^[l] x nc\\^[l]**
+    - **bias: nc\\^[l]**
+  - input:
+    - **nh\\^[l-1]** x **nw\\^[l-1]** x **nc\\^[l-1]**
+  - output
+    - **nh\\^[l]** x **nw\\^[l]** x **nc\\^[l]**
+    - **A\\^[l] = m x nh\\^[l]** x **nw\\^[l]** x **nc\\^[l]**
+  
+  ## Simple Convolutional Network Example [Video]
+  - image 39 x 39 x 3
+  - **nh\\^[0] = nw\\^[0] = 39, nc\\^[0] = 3**
+  - **f\\^[1] = 3, s\\^[1] = 1, p\\^[1] = 0, 10 filters**
+  - 3 types layers in a convolotional network:
+    - Convolution - CONV
+    - Pooling - POOL
+    - Fully connected - FC
+  
+  ## Pooling Layers [Video]
+  - Max pooling: max of numbers in a region for output
+    - hyperparameters f and s, filter size and stride size
+    - no parameters to learn
+    - usually no p padding used
+  
+  - Average pooling: take average in a region for output
+    - hyperparameters f and s, filter size and stride size
+    - max pooling used more than average pooling
+    - no params to learn
+  
+  ## CNN Example [Video]
+  - conv and pool together might be called as a single layer since pool doesn't have params
+  - going deep nh, nw decreases, nc increases
+  - eg: CONV POOL CONV POOL FC FC FC SOFTMAX
+  
+  ## Why Convolutions? [Video]
+  - Total number of parameters becomes smaller.
+  - Parameter sharing: A feature detector useful in somepart might be useful in another part as well.
+  - Sparcity of connections: in each layer output depends on only a small number of inputs
+  - translation invariance
+  - image shifted couple pixels are quiet similar in output. robust to shifts.
+'''
+tags: [
+  "machine-learning"
+  "deep-learning"
+]
+isStarred: false
+isTrashed: false
